@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NATURAL ANDES SUPPLY</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    :root{--forest:#2D6A4F;--forest-deep:#1B4332;--mint:#52B788;--mint-light:#95D5B2;--earth:#C4A35A;--earth-light:#DDB97A;--cream:#F9F5EC;--off-white:#FEFCF7;--charcoal:#1A1A1A;--gray:#6B7280;--border:rgba(45,106,79,0.15);}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Lato',sans-serif;background:var(--off-white);color:var(--charcoal);}
+
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 5vw;background:rgba(254,252,247,0.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);}
+    .logo{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--forest-deep);text-decoration:none;}
+    .logo span{color:var(--earth);}
+    .nav-links{display:flex;gap:2rem;list-style:none;}
+    .nav-links a{font-size:0.82rem;letter-spacing:0.06em;color:var(--gray);text-decoration:none;transition:color 0.2s;text-transform:uppercase;}
+    .nav-links a:hover,.nav-links a.active{color:var(--forest);}
+    .nav-buy{background:var(--forest);color:white;padding:0.6rem 1.6rem;font-size:0.8rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:background 0.2s;}
+    .nav-buy:hover{background:var(--forest-deep);}
+
+    /* HERO */
+    .hero{min-height:100vh;background:linear-gradient(135deg,#1B4332 0%,#2D6A4F 55%,#40916C 100%);display:flex;align-items:center;padding:0 5vw;position:relative;overflow:hidden;}
+    .hero-bg{position:absolute;right:-4rem;bottom:-4rem;font-size:28rem;opacity:0.03;line-height:1;pointer-events:none;user-select:none;}
+    .hero-content{max-width:680px;position:relative;z-index:1;}
+    .hero-eyebrow{font-size:0.72rem;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--mint-light);margin-bottom:1.5rem;}
+    .hero-title{font-family:'Playfair Display',serif;font-size:clamp(3rem,6vw,5.5rem);font-weight:700;color:white;line-height:1.05;margin-bottom:1.5rem;}
+    .hero-title em{font-style:italic;color:var(--earth-light);}
+    .hero-desc{font-size:1rem;line-height:1.9;color:rgba(255,255,255,0.6);font-weight:300;max-width:520px;margin-bottom:3rem;}
+    .hero-ctas{display:flex;gap:1.2rem;flex-wrap:wrap;}
+    .btn-primary{background:var(--earth);color:white;padding:1rem 2.4rem;font-size:0.85rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:all 0.2s;box-shadow:0 6px 24px rgba(196,163,90,0.3);}
+    .btn-primary:hover{background:var(--earth-light);transform:translateY(-2px);}
+    .btn-outline{border:1.5px solid rgba(255,255,255,0.3);color:white;padding:1rem 2.4rem;font-size:0.85rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:all 0.2s;}
+    .btn-outline:hover{border-color:white;background:rgba(255,255,255,0.05);}
+    .hero-badges{display:flex;gap:2rem;margin-top:4rem;padding-top:3rem;border-top:1px solid rgba(255,255,255,0.1);}
+    .badge{text-align:center;}
+    .badge-num{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--earth-light);}
+    .badge-label{font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.45);font-weight:300;margin-top:0.2rem;}
+
+    /* SECTION SHARED */
+    .section-label{font-size:0.72rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--mint);margin-bottom:1rem;}
+    .section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:700;line-height:1.15;color:var(--forest-deep);margin-bottom:1.5rem;}
+    .section-title em{font-style:italic;color:var(--earth);}
+    .section-body{font-size:0.92rem;line-height:1.9;color:var(--gray);font-weight:300;}
+
+    /* BENEFICIOS */
+    #beneficios{padding:8rem 5vw;background:var(--off-white);}
+    .beneficios-inner{max-width:1200px;margin:0 auto;}
+    .beneficios-header{text-align:center;margin-bottom:5rem;}
+    .beneficios-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;}
+    .beneficio-card{background:white;padding:2.5rem 2rem;border-radius:4px;border:1px solid var(--border);transition:border-color 0.2s,box-shadow 0.25s,transform 0.25s;}
+    .beneficio-card:hover{border-color:var(--mint);box-shadow:0 8px 32px rgba(45,106,79,0.1);transform:translateY(-4px);}
+    .b-icon{font-size:2rem;margin-bottom:1.2rem;display:block;}
+    .b-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--forest-deep);margin-bottom:0.8rem;}
+    .b-body{font-size:0.82rem;line-height:1.9;color:var(--gray);font-weight:300;}
+
+    /* PRODUCTO HIGHLIGHT (index) */
+    .producto-section{padding:8rem 5vw;background:var(--cream);}
+    .producto-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;}
+    .producto-visual{background:linear-gradient(145deg,var(--forest-deep),var(--forest));border-radius:4px;aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:9rem;position:relative;overflow:hidden;}
+    .pv-deco{position:absolute;bottom:-1rem;right:-1rem;font-size:14rem;opacity:0.06;line-height:1;}
+    .producto-info .section-label{margin-bottom:0.8rem;}
+    .producto-info .section-title{margin-bottom:1rem;}
+    .producto-info .section-body{margin-bottom:2rem;}
+    .producto-tags{display:flex;flex-wrap:wrap;gap:0.6rem;margin-bottom:2.5rem;}
+    .tag{background:white;border:1px solid var(--border);padding:0.4rem 1rem;font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--forest);border-radius:100px;}
+    .btn-cta{display:inline-block;background:var(--forest);color:white;padding:1rem 2.4rem;font-size:0.85rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:all 0.2s;box-shadow:0 4px 16px rgba(27,67,50,0.2);}
+    .btn-cta:hover{background:var(--forest-deep);transform:translateY(-1px);}
+
+    /* ORIGEN */
+    .origen-section{padding:8rem 5vw;background:linear-gradient(135deg,#1B4332 0%,#2D6A4F 100%);text-align:center;position:relative;overflow:hidden;}
+    .origen-bg{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:30rem;opacity:0.025;pointer-events:none;line-height:1;}
+    .origen-inner{max-width:700px;margin:0 auto;position:relative;z-index:1;}
+    .origen-eyebrow{font-size:0.72rem;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:var(--mint-light);margin-bottom:1.5rem;}
+    .origen-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:700;color:white;line-height:1.15;margin-bottom:1.5rem;}
+    .origen-title em{font-style:italic;color:var(--earth-light);}
+    .origen-body{font-size:0.95rem;line-height:1.9;color:rgba(255,255,255,0.55);font-weight:300;margin-bottom:3rem;}
+    .origen-stats{display:flex;justify-content:center;gap:4rem;}
+    .ostat-num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:var(--earth-light);}
+    .ostat-label{font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.45);font-weight:300;margin-top:0.3rem;}
+
+    /* TESTIMONIOS */
+    .testimonios-section{padding:8rem 5vw;}
+    .test-inner{max-width:1200px;margin:0 auto;}
+    .test-header{text-align:center;margin-bottom:5rem;}
+    .test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;}
+    .test-card{background:white;padding:2.5rem;border-radius:4px;border:1px solid var(--border);position:relative;}
+    .test-stars{color:var(--earth);font-size:0.9rem;margin-bottom:1.2rem;letter-spacing:0.1em;}
+    .test-quote{font-size:0.88rem;line-height:1.9;color:var(--charcoal);font-weight:300;margin-bottom:1.5rem;font-style:italic;}
+    .test-author{font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--forest);}
+    .test-loc{font-size:0.72rem;color:var(--gray);font-weight:300;margin-top:0.2rem;}
+
+    /* CTA FINAL */
+    .cta-section{padding:8rem 5vw;background:var(--cream);text-align:center;}
+    .cta-inner{max-width:600px;margin:0 auto;}
+
+    /* ===================== PRODUCTO PAGE ===================== */
+    #producto-page{background:var(--off-white);}
+    .page-header{padding:9rem 5vw 4rem;background:linear-gradient(135deg,#1B4332,#2D6A4F);position:relative;overflow:hidden;}
+    .ph-bg{position:absolute;bottom:-3rem;right:2rem;font-size:14rem;opacity:0.04;line-height:1;pointer-events:none;}
+    .ph-eyebrow{font-size:0.72rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--mint-light);margin-bottom:1rem;}
+    .ph-title{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:700;color:white;line-height:1.1;margin-bottom:1rem;}
+    .ph-title em{font-style:italic;color:var(--earth-light);}
+    .ph-desc{font-size:0.95rem;line-height:1.8;color:rgba(255,255,255,0.6);font-weight:300;max-width:500px;}
+    .breadcrumb{padding:1rem 5vw;display:flex;gap:0.8rem;font-size:0.75rem;color:var(--gray);border-bottom:1px solid var(--border);align-items:center;}
+    .breadcrumb a{color:var(--gray);text-decoration:none;transition:color 0.2s;}
+    .breadcrumb a:hover{color:var(--forest);}
+    .breadcrumb span{color:var(--forest);}
+
+    .product-main{padding:4rem 5vw;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;max-width:1200px;margin:0 auto;}
+
+    .gallery{position:sticky;top:5rem;}
+    .gallery-main{background:linear-gradient(145deg,#2D6A4F,#40916C);aspect-ratio:1;border-radius:4px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;margin-bottom:1rem;cursor:pointer;}
+    .gm-bg-circle{position:absolute;width:70%;height:70%;border-radius:50%;background:rgba(255,255,255,0.05);}
+    .product-img-display{position:relative;z-index:2;text-align:center;}
+    .pid-bag{width:180px;height:240px;background:linear-gradient(160deg,#F9F5EC,#EDE5D0);border-radius:16px 16px 24px 24px;position:relative;margin:0 auto 1rem;box-shadow:0 16px 50px rgba(0,0,0,0.35);}
+    .pid-stripe{position:absolute;top:0;left:50%;transform:translateX(-50%);width:80%;height:10px;background:var(--forest);border-radius:0 0 6px 6px;}
+    .pid-label{position:absolute;top:24px;left:50%;transform:translateX(-50%);width:80%;background:var(--forest);border-radius:6px;padding:10px;text-align:center;}
+    .pidl-brand{font-family:'Playfair Display',serif;font-size:0.85rem;font-weight:700;color:white;}
+    .pidl-sub{font-size:0.5rem;color:var(--mint-light);letter-spacing:0.12em;text-transform:uppercase;margin-top:2px;}
+    .pid-leaf{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);font-size:2.8rem;line-height:1;}
+    .pid-weight{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);font-size:0.55rem;font-weight:700;letter-spacing:0.12em;color:var(--forest-deep);text-transform:uppercase;white-space:nowrap;}
+    .gallery-badge-new{position:absolute;top:1.2rem;left:1.2rem;background:var(--earth);color:white;font-size:0.6rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:0.3rem 0.8rem;border-radius:2px;}
+    .gallery-cert{position:absolute;top:1.2rem;right:1.2rem;background:rgba(255,255,255,0.12);color:white;font-size:0.58rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:0.3rem 0.8rem;border-radius:2px;border:1px solid rgba(255,255,255,0.2);}
+    .gallery-thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:0.8rem;}
+    .thumb{aspect-ratio:1;background:var(--cream);border:2px solid transparent;border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;cursor:pointer;transition:border-color 0.2s;}
+    .thumb.active,.thumb:hover{border-color:var(--forest);}
+
+    .prod-eyebrow{font-size:0.72rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--mint);margin-bottom:0.8rem;}
+    .prod-name{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.5vw,2.8rem);font-weight:700;line-height:1.1;color:var(--forest-deep);margin-bottom:0.5rem;}
+    .prod-subtitle{font-size:0.85rem;color:var(--gray);margin-bottom:1.5rem;font-weight:300;letter-spacing:0.04em;}
+    .prod-rating{display:flex;align-items:center;gap:0.8rem;margin-bottom:1.5rem;}
+    .stars{color:var(--earth);font-size:0.9rem;}
+    .rating-text{font-size:0.78rem;color:var(--gray);}
+    .certified-badges{display:flex;gap:0.6rem;flex-wrap:wrap;margin-bottom:1.5rem;}
+    .cert-badge{display:flex;align-items:center;gap:0.4rem;background:rgba(45,106,79,0.08);color:var(--forest);font-size:0.68rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:0.35rem 0.8rem;border-radius:100px;}
+
+    .option-section{margin-bottom:1.8rem;}
+    .option-label{font-size:0.72rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--gray);margin-bottom:0.8rem;}
+    .variant-btns{display:flex;gap:0.8rem;flex-wrap:wrap;}
+    .variant-btn{padding:0.7rem 1.5rem;border:2px solid var(--border);background:none;font-family:'Lato',sans-serif;font-size:0.82rem;font-weight:700;color:var(--charcoal);cursor:pointer;border-radius:2px;transition:all 0.2s;position:relative;}
+    .variant-btn.active{border-color:var(--forest);color:var(--forest);background:rgba(45,106,79,0.05);}
+    .variant-btn:hover{border-color:var(--mint);}
+    .variant-save{position:absolute;top:-8px;right:-8px;background:var(--earth);color:white;font-size:0.55rem;font-weight:700;padding:2px 6px;border-radius:100px;}
+
+    .price-block{padding:1.5rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:1.8rem;}
+    .price-main{display:flex;align-items:baseline;gap:0.8rem;margin-bottom:0.4rem;}
+    .price-currency{font-size:1.1rem;color:var(--forest);font-weight:700;margin-top:0.5rem;}
+    .price-amount{font-family:'Playfair Display',serif;font-size:3rem;font-weight:700;color:var(--forest-deep);}
+    .price-old{font-size:1.1rem;color:var(--gray);text-decoration:line-through;}
+    .price-msi{font-size:0.8rem;color:var(--mint);font-weight:700;}
+    .price-shipping{font-size:0.78rem;color:var(--gray);font-weight:300;margin-top:0.3rem;}
+
+    .buy-row{display:flex;gap:1rem;margin-bottom:1.5rem;}
+    .qty-ctrl{display:flex;align-items:center;border:2px solid var(--border);border-radius:2px;}
+    .qty-btn{width:44px;height:52px;background:none;border:none;font-size:1.2rem;cursor:pointer;color:var(--charcoal);transition:background 0.15s;}
+    .qty-btn:hover{background:var(--cream);}
+    .qty-val{width:44px;text-align:center;font-size:0.9rem;font-weight:700;}
+    .btn-add-cart{flex:1;background:var(--forest);color:white;border:none;font-family:'Lato',sans-serif;font-size:0.85rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all 0.2s;box-shadow:0 4px 16px rgba(27,67,50,0.25);}
+    .btn-add-cart:hover{background:var(--forest-deep);transform:translateY(-1px);box-shadow:0 6px 20px rgba(27,67,50,0.35);}
+    .btn-wa{padding:0.9rem 1.2rem;border:2px solid #25D366;color:#25D366;background:none;font-size:1rem;cursor:pointer;border-radius:2px;transition:all 0.2s;}
+    .btn-wa:hover{background:#25D366;color:white;}
+
+    .trust-row{display:flex;gap:1.5rem;padding:1rem 0;border-top:1px solid var(--border);}
+    .tr-item{display:flex;flex-direction:column;align-items:center;gap:0.3rem;flex:1;}
+    .tr-icon{font-size:1.3rem;}
+    .tr-text{font-size:0.65rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--gray);text-align:center;}
+
+    .tabs-section{padding:4rem 5vw;max-width:1200px;margin:0 auto;}
+    .tabs-nav{display:flex;gap:0;border-bottom:2px solid var(--border);margin-bottom:3rem;}
+    .tab-btn{padding:0.9rem 1.8rem;font-family:'Lato',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;background:none;border:none;border-bottom:3px solid transparent;margin-bottom:-2px;cursor:pointer;color:var(--gray);transition:all 0.2s;}
+    .tab-btn.active{color:var(--forest);border-bottom-color:var(--forest);}
+    .tab-content{display:none;}
+    .tab-content.active{display:block;}
+
+    .desc-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;}
+    .desc-text p{font-size:0.9rem;line-height:1.9;color:var(--gray);font-weight:300;margin-bottom:1rem;}
+    .highlights{list-style:none;}
+    .highlights li{font-size:0.88rem;line-height:1.8;color:var(--charcoal);padding:0.7rem 0;border-bottom:1px solid var(--border);display:flex;gap:1rem;}
+    .highlights li::before{content:'✓';color:var(--mint);font-weight:700;flex-shrink:0;}
+
+    .nutrition-table{max-width:500px;}
+    .nt-title{font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:0.5rem;color:var(--forest-deep);}
+    .nt-sub{font-size:0.78rem;color:var(--gray);margin-bottom:1.5rem;}
+    .nt-row{display:flex;justify-content:space-between;padding:0.7rem 0;border-bottom:1px solid var(--border);font-size:0.85rem;}
+    .nt-label{color:var(--gray);}
+    .nt-val{font-weight:700;color:var(--charcoal);}
+    .nt-val.highlight{color:var(--forest);}
+    .nt-disclaimer{font-size:0.7rem;color:var(--gray);margin-top:1rem;font-style:italic;}
+
+    .reviews-top{display:flex;gap:4rem;align-items:center;margin-bottom:3rem;padding-bottom:2rem;border-bottom:1px solid var(--border);}
+    .big-score{text-align:center;}
+    .bs-num{font-family:'Playfair Display',serif;font-size:5rem;font-weight:700;line-height:1;color:var(--forest-deep);}
+    .bs-stars{color:var(--earth);font-size:1.1rem;margin:0.3rem 0;}
+    .bs-count{font-size:0.72rem;color:var(--gray);}
+    .rbar-row{display:flex;align-items:center;gap:1rem;margin-bottom:0.6rem;}
+    .rbar-label{font-size:0.72rem;color:var(--gray);width:30px;text-align:right;}
+    .rbar-track{flex:1;height:6px;background:var(--border);border-radius:3px;}
+    .rbar-fill{height:100%;background:var(--earth);border-radius:3px;}
+    .review-cards{display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
+    .r-card{padding:2rem;border:1px solid var(--border);border-radius:4px;}
+    .rc-top{display:flex;justify-content:space-between;margin-bottom:0.8rem;}
+    .rc-name{font-weight:700;font-size:0.88rem;}
+    .rc-date{font-size:0.72rem;color:var(--gray);}
+    .rc-stars{color:var(--earth);font-size:0.82rem;margin-bottom:0.8rem;}
+    .rc-text{font-size:0.85rem;line-height:1.8;color:var(--gray);font-weight:300;}
+
+    .related{padding:4rem 5vw;background:var(--cream);border-top:1px solid var(--border);}
+    .related-title{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--forest-deep);margin-bottom:0.5rem;}
+    .related-sub{font-size:0.82rem;color:var(--gray);font-weight:300;margin-bottom:2rem;}
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+    .rel-card{background:white;border:1px solid var(--border);border-radius:4px;overflow:hidden;transition:transform 0.3s,box-shadow 0.3s;}
+    .rel-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(27,67,50,0.1);}
+    .rel-img{background:linear-gradient(135deg,#1B4332,#40916C);aspect-ratio:1.3;display:flex;align-items:center;justify-content:center;font-size:3rem;}
+    .rel-body{padding:1.5rem;}
+    .rel-name{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--forest-deep);margin-bottom:0.4rem;}
+    .rel-desc{font-size:0.78rem;color:var(--gray);font-weight:300;line-height:1.6;margin-bottom:1rem;}
+    .rel-price{font-size:0.85rem;color:var(--earth);font-weight:700;margin-bottom:1rem;}
+    .rel-link{font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--forest);text-decoration:none;border-bottom:1px solid var(--forest);padding-bottom:1px;transition:color 0.2s;}
+    .rel-link:hover{color:var(--mint);}
+
+    /* ===================== CONTACTO PAGE ===================== */
+    #contacto-page .page-header{padding:9rem 5vw 5rem;background:linear-gradient(135deg,#1B4332 0%,#2D6A4F 60%,#40916C 100%);}
+    #contacto-page .ph-bg{font-size:16rem;}
+    .contact-main{padding:6rem 5vw;display:grid;grid-template-columns:1fr 1.4fr;gap:5rem;align-items:start;max-width:1200px;margin:0 auto;}
+
+    .contact-cards{display:flex;flex-direction:column;gap:1.2rem;margin-bottom:2.5rem;}
+    .contact-card{padding:1.5rem;border:1px solid var(--border);border-radius:4px;display:flex;gap:1.2rem;align-items:flex-start;background:white;transition:border-color 0.2s,box-shadow 0.2s;}
+    .contact-card:hover{border-color:var(--mint);box-shadow:0 4px 16px rgba(45,106,79,0.08);}
+    .cc-icon{font-size:1.4rem;flex-shrink:0;}
+    .cc-label{font-size:0.65rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--mint);margin-bottom:0.3rem;}
+    .cc-val{font-size:0.88rem;font-weight:700;color:var(--charcoal);margin-bottom:0.2rem;}
+    .cc-sub{font-size:0.75rem;color:var(--gray);font-weight:300;}
+
+    .hours-block{background:var(--cream);padding:1.5rem;border-radius:4px;border:1px solid var(--border);}
+    .hours-title{font-size:0.7rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--forest);margin-bottom:1rem;}
+    .hour-row{display:flex;justify-content:space-between;padding:0.6rem 0;border-bottom:1px solid var(--border);font-size:0.82rem;}
+    .hr-day{color:var(--gray);}
+    .hr-time{font-weight:700;color:var(--forest);}
+    .hr-time.off{color:var(--gray);font-weight:300;}
+
+    .form-wrap{background:white;padding:3rem;border-radius:4px;border:1px solid var(--border);box-shadow:0 4px 24px rgba(27,67,50,0.06);}
+    .form-title{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--forest-deep);margin-bottom:0.4rem;}
+    .form-sub{font-size:0.78rem;color:var(--gray);font-weight:300;margin-bottom:2rem;}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;}
+    .form-group{display:flex;flex-direction:column;gap:0.45rem;margin-bottom:1rem;}
+    label{font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray);}
+    input,select,textarea{font-family:'Lato',sans-serif;font-size:0.88rem;background:var(--cream);border:1.5px solid var(--border);padding:0.85rem 1rem;color:var(--charcoal);outline:none;border-radius:2px;transition:border-color 0.2s,box-shadow 0.2s;width:100%;}
+    input:focus,select:focus,textarea:focus{border-color:var(--mint);box-shadow:0 0 0 3px rgba(82,183,136,0.1);}
+    textarea{resize:vertical;min-height:120px;}
+    select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%232D6A4F' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;background-color:var(--cream);}
+    .check-group{display:flex;gap:0.8rem;align-items:flex-start;margin-bottom:1.8rem;}
+    .check-group input[type=checkbox]{width:18px;height:18px;flex-shrink:0;margin-top:2px;accent-color:var(--forest);}
+    .check-group label{font-size:0.78rem;line-height:1.7;color:var(--gray);font-weight:300;text-transform:none;letter-spacing:0;}
+    .check-group a{color:var(--forest);font-weight:700;text-decoration:none;}
+    .btn-send{width:100%;padding:1rem;background:var(--forest);color:white;font-family:'Lato',sans-serif;font-size:0.85rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;border:none;border-radius:2px;cursor:pointer;transition:all 0.2s;box-shadow:0 4px 16px rgba(27,67,50,0.2);}
+    .btn-send:hover{background:var(--forest-deep);transform:translateY(-1px);}
+    .form-success{display:none;text-align:center;padding:3rem 2rem;}
+    .fs-icon{font-size:3rem;margin-bottom:1rem;display:block;}
+    .fs-title{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--forest-deep);margin-bottom:0.8rem;}
+    .fs-text{font-size:0.88rem;line-height:1.9;color:var(--gray);font-weight:300;}
+
+    .wa-section{padding:5rem 5vw;background:var(--forest-deep);text-align:center;}
+    .wa-section h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:700;color:white;margin-bottom:1rem;}
+    .wa-section p{font-size:0.95rem;color:rgba(255,255,255,0.6);font-weight:300;margin-bottom:2.5rem;}
+    .btn-wa-big{display:inline-flex;align-items:center;gap:0.8rem;background:#25D366;color:white;padding:1.1rem 3rem;font-size:0.9rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;border-radius:100px;transition:all 0.2s;box-shadow:0 6px 24px rgba(37,211,102,0.35);}
+    .btn-wa-big:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(37,211,102,0.45);}
+
+    .faq-section{padding:6rem 5vw;}
+    .faq-header{text-align:center;margin-bottom:4rem;}
+    .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:1000px;margin:0 auto;}
+    .faq-item{background:white;padding:2rem;border-radius:4px;border:1px solid var(--border);transition:border-color 0.2s;}
+    .faq-item:hover{border-color:var(--mint);}
+    .faq-q{font-size:0.88rem;font-weight:700;color:var(--forest-deep);margin-bottom:0.8rem;line-height:1.5;}
+    .faq-a{font-size:0.82rem;line-height:1.9;color:var(--gray);font-weight:300;}
+    .faq-a a{color:var(--forest);font-weight:700;text-decoration:none;}
+
+    /* FOOTER */
+    footer{background:var(--charcoal);padding:4rem 5vw 2rem;}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,0.08);}
+    .footer-logo{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:white;margin-bottom:0.8rem;}
+    .footer-logo span{color:var(--earth-light);}
+    .footer-tagline{font-size:0.8rem;line-height:1.8;color:rgba(255,255,255,0.4);font-weight:300;margin-bottom:1.2rem;}
+    .footer-col-title{font-size:0.7rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:1rem;}
+    .footer-links{list-style:none;}
+    .footer-links li{margin-bottom:0.6rem;}
+    .footer-links a{font-size:0.8rem;color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.2s;font-weight:300;}
+    .footer-links a:hover{color:var(--mint-light);}
+    .footer-bottom{display:flex;justify-content:space-between;font-size:0.7rem;color:rgba(255,255,255,0.2);}
+
+    .wa-float{position:fixed;bottom:2rem;right:2rem;background:#25D366;color:white;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;text-decoration:none;z-index:300;box-shadow:0 4px 20px rgba(37,211,102,0.4);transition:transform 0.2s;}
+    .wa-float:hover{transform:scale(1.1);}
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s,transform 0.7s;}
+    .reveal.visible{opacity:1;transform:none;}
+    ::-webkit-scrollbar{width:5px;}
+    ::-webkit-scrollbar-track{background:var(--cream);}
+    ::-webkit-scrollbar-thumb{background:var(--forest);border-radius:10px;}
+  </style>
+</head>
+<body>
+
+  <a href="https://wa.me/5215512345678" target="_blank" class="wa-float">💬</a>
+
+  <!-- ======================================================== -->
+  <!-- NAV -->
+  <!-- ======================================================== -->
+  <nav>
+    <a href="#inicio" class="logo" style="display:flex;align-items:center;gap:0.6rem;">
+  <img src="logo_maca.png" alt="Logo" style="height:38px;width:auto;"/>
+  NATURAL ANDES<span>SUPPLY</span>
+</a>
+    <ul class="nav-links">
+      <li><a href="#beneficios">Beneficios</a></li>
+      <li><a href="#producto-page">Producto</a></li>
+      <li><a href="#contacto-page">Contacto</a></li>
+    </ul>
+    <a href="#producto-page" class="nav-buy">Comprar ahora</a>
+  </nav>
+
+  <!-- ======================================================== -->
+  <!-- SECCIÓN 1: BENEFICIOS (maca_index.html) -->
+  <!-- ======================================================== -->
+  <div id="inicio">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-bg">🌿</div>
+      <div class="hero-content">
+        <p class="hero-eyebrow">— Superalimentos andinos certificados</p>
+        <h1 class="hero-title"> Energía que<br>nace en los <em>Andes</em></h1>
+        <p class="hero-desc">Maca orgánica cultivada a más de 4,000 m sobre el nivel del mar en Junín, Perú. Certificación USDA Organic. Entregada directo a tu puerta en toda la República Mexicana.</p>
+        <div class="hero-ctas">
+          <a href="#producto-page" class="btn-primary">Ver producto</a>
+          <a href="#beneficios" class="btn-outline">Conocer beneficios</a>
+        </div>
+        <div class="hero-badges">
+          <div class="badge"><div class="badge-num">100%</div><div class="badge-label">Orgánica certificada</div></div>
+          <div class="badge"><div class="badge-num">4,000+</div><div class="badge-label">Metros de altitud</div></div>
+          <div class="badge"><div class="badge-num">+5,000</div><div class="badge-label">Clientes satisfechos</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BENEFICIOS -->
+    <section id="beneficios" style="padding:8rem 5vw;background:var(--off-white);">
+      <div style="max-width:1200px;margin:0 auto;">
+        <div class="beneficios-header reveal">
+          <p class="section-label">— ¿Por qué la maca andina?</p>
+          <h2 class="section-title">Beneficios <em>comprobados</em><br>para tu bienestar</h2>
+        </div>
+        <div class="beneficios-grid">
+          <div class="beneficio-card reveal">
+            <span class="b-icon">⚡</span>
+            <div class="b-title">Energía y vitalidad</div>
+            <p class="b-body">Reduce la fatiga crónica y mejora tu rendimiento físico y mental desde las primeras semanas de uso continuo.</p>
+          </div>
+          <div class="beneficio-card reveal">
+            <span class="b-icon">⚖️</span>
+            <div class="b-title">Equilibrio hormonal</div>
+            <p class="b-body">Adaptógeno natural que ayuda a regular los niveles hormonales en hombres y mujeres de forma segura.</p>
+          </div>
+          <div class="beneficio-card reveal">
+            <span class="b-icon">🧠</span>
+            <div class="b-title">Claridad mental</div>
+            <p class="b-body">Mejora la concentración, memoria y estado de ánimo gracias a sus aminoácidos esenciales y minerales.</p>
+          </div>
+          <div class="beneficio-card reveal">
+            <span class="b-icon">💪</span>
+            <div class="b-title">Rendimiento físico</div>
+            <p class="b-body">Utilizada por atletas y deportistas para mejorar la resistencia, fuerza muscular y tiempo de recuperación.</p>
+          </div>
+          <div class="beneficio-card reveal">
+            <span class="b-icon">🌸</span>
+            <div class="b-title">Salud reproductiva</div>
+            <p class="b-body">Apoya la fertilidad, libido y función sexual tanto en hombres como en mujeres de manera natural.</p>
+          </div>
+          <div class="beneficio-card reveal">
+            <span class="b-icon">🛡️</span>
+            <div class="b-title">Sistema inmune</div>
+            <p class="b-body">Rica en antioxidantes, vitaminas B, C y E, y minerales como zinc y hierro para fortalecer tus defensas.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCTO HIGHLIGHT -->
+    <section class="producto-section">
+      <div class="producto-inner">
+        <div class="producto-visual reveal" style="background:var(--cream);padding:1rem;">
+  <img src="plantacion de maca.jfif" alt="Maca Andina Premium" style="width:100%;height:100%;object-fit:contain;border-radius:4px;"/>
+</div>
+        <div class="producto-info reveal">
+          <p class="section-label">— Nuestro producto estrella</p>
+          <h2 class="section-title">Maca Andina<br><em>Premium</em></h2>
+          <p class="section-body">Polvo de maca gelatinizada de raíz entera, cultivada orgánicamente en las alturas de Junín, Perú. Sin aditivos, sin rellenos, sin pesticidas. Solo maca pura en su máxima expresión nutricional.</p>
+          <div class="producto-tags">
+            <span class="tag">USDA Organic</span>
+            <span class="tag">Sin gluten</span>
+            <span class="tag">Vegano</span>
+            <span class="tag">Sin GMO</span>
+            <span class="tag">Gelatinizada</span>
+          </div>
+          <a href="#producto-page" class="btn-cta">Ver producto completo →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ORIGEN -->
+    <section class="origen-section">
+      <div class="origen-bg">🏔</div>
+      <div class="origen-inner reveal">
+        <p class="origen-eyebrow">— Nuestro origen</p>
+        <h2 class="origen-title">Directo desde<br>Junín, <em>Perú</em></h2>
+        <p class="origen-body">Trabajamos directamente con familias agricultoras en las alturas de los Andes peruanos. Sin intermediarios, con comercio justo y respeto por las tradiciones ancestrales de cultivo de la maca.</p>
+        <div class="origen-stats">
+          <div><div class="ostat-num">4,200m</div><div class="ostat-label">Altitud de cultivo</div></div>
+          <div><div class="ostat-num">15+</div><div class="ostat-label">Familias agrícolas</div></div>
+          <div><div class="ostat-num">100%</div><div class="ostat-label">Comercio justo</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIOS -->
+    <section class="testimonios-section">
+      <div class="test-inner">
+        <div class="test-header reveal">
+          <p class="section-label">— Lo que dicen nuestros clientes</p>
+          <h2 class="section-title">Resultados <em>reales</em></h2>
+        </div>
+        <div class="test-grid">
+          <div class="test-card reveal">
+            <div class="test-stars">★★★★★</div>
+            <p class="test-quote">"Llevo 2 meses tomándola y la diferencia en mi energía es notable. La tomo en mi licuado cada mañana y ya no siento ese bajón de las 3pm."</p>
+            <div class="test-author">Mariana G.</div>
+            <div class="test-loc">Ciudad de México</div>
+          </div>
+          <div class="test-card reveal">
+            <div class="test-stars">★★★★★</div>
+            <p class="test-quote">"Soy atleta aficionado y la uso antes de entrenar. Noto más resistencia y me recupero más rápido. El producto es de excelente calidad."</p>
+            <div class="test-author">Carlos M.</div>
+            <div class="test-loc">Guadalajara, Jalisco</div>
+          </div>
+          <div class="test-card reveal">
+            <div class="test-stars">★★★★★</div>
+            <p class="test-quote">"El envío fue rapidísimo y la maca tiene un sabor muy suave, fácil de agregar a recetas. Definitivamente mi compra recurrente del mes."</p>
+            <div class="test-author">Sandra R.</div>
+            <div class="test-loc">Monterrey, NL</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="cta-section">
+      <div class="cta-inner reveal">
+        <p class="section-label" style="text-align:center;">— Empieza hoy</p>
+        <h2 class="section-title" style="text-align:center;">¿Listo para sentir<br>la <em>diferencia</em>?</h2>
+        <p class="section-body" style="text-align:center;margin-bottom:2.5rem;">Envíos a toda la República Mexicana. Pago seguro. Satisfacción garantizada.</p>
+        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+          <a href="#producto-page" class="btn-cta">Ver producto y precios</a>
+          <a href="#contacto-page" style="display:inline-block;border:1.5px solid var(--border);color:var(--forest);padding:1rem 2.4rem;font-size:0.85rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:all 0.2s;">Contáctanos</a>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /inicio -->
+
+  <!-- ======================================================== -->
+  <!-- SECCIÓN 2: PRODUCTO (maca_producto.html) -->
+  <!-- ======================================================== -->
+  <div id="producto-page">
+
+    <div class="page-header">
+      <div class="ph-eyebrow">— NATURAL ANDES SUPPLY · Colección 2025</div>
+      <h2 class="ph-title">Maca Andina<br>en Polvo <em>Premium</em></h2>
+      <p class="ph-desc">100% orgánica, gelatinizada, origen certificado Junín, Perú. La maca de mayor altitud del mundo.</p>
+      <div class="ph-bg"></div>
+    </div>
+    <div class="breadcrumb">
+      <a href="#inicio">Inicio</a> › <span>Maca Andina Premium</span>
+    </div>
+
+    <section class="product-main" id="comprar">
+      <!-- Gallery -->
+      <div class="gallery reveal">
+        <div class="gallery-main" id="galleryMain">
+        <div class="gallery-main" id="galleryMain" style="background:var(--cream);">
+  <div class="gallery-badge-new">Nuevo</div>
+  <div class="gallery-cert">✓ Orgánico</div>
+  <img src="imagen maca.png" alt="Maca Andina Premium" style="width:85%;height:85%;object-fit:contain;position:relative;z-index:2;"/>
+</div>  
+          
+        </div>
+      </div>
+
+      <!-- Info -->
+      <div class="reveal">
+        <p class="prod-eyebrow">— Superalimento Andino</p>
+        <h2 class="prod-name">Maca Andina<br>en Polvo Premium</h2>
+        <p class="prod-subtitle">Gelatinizada · Origen Junín, Perú · 4,000 m s.n.m.</p>
+
+        <div class="prod-rating">
+          <span class="stars">★★★★★</span>
+          <span class="rating-text">4.9 / 5 — 186 reseñas verificadas</span>
+        </div>
+
+        <div class="certified-badges">
+          <span class="cert-badge">✅ USDA Organic</span>
+          <span class="cert-badge">✅ Sin OMG</span>
+          <span class="cert-badge">✅ Vegano</span>
+          <span class="cert-badge">✅ Sin gluten</span>
+        </div>
+
+        <!-- Variant -->
+        <div class="option-section">
+          <div class="option-label">Presentación</div>
+          <div class="variant-btns">
+            <button class="variant-btn active" onclick="selectVariant(this,'250g','140')">250g</button>
+            <button class="variant-btn" onclick="selectVariant(this,'500g','290')">500g</button>
+            <button class="variant-btn" onclick="selectVariant(this,'1000g','500')">1000g</button>
+            <button class="variant-btn" onclick="selectVariant(this,'5K','1800')">5K</button>
+            <button class="variant-btn" onclick="selectVariant(this,'10K','3600')">10K<span class="variant-save">Ahorra 15%</span></button>
+          </div>
+        </div>
+
+        <!-- Price -->
+        <div class="price-block">
+          <div class="price-main">
+            <span class="price-currency">$</span>
+            <span class="price-amount" id="priceDisplay">320</span>
+            <span class="price-old" id="priceOld" style="display:none">$376</span>
+            <span style="font-size:0.8rem;background:#D1FAE5;color:#065F46;padding:0.3rem 0.8rem;border-radius:100px;font-weight:700;align-self:center;margin-left:0.5rem;">⚡ En stock</span>
+          </div>
+          <div class="price-msi" id="priceMsi">o 3 MSI de $107 con tarjeta participante</div>
+          <div class="price-shipping">🚚 Envío GRATIS a toda la República Mexicana</div>
+        </div>
+
+        <div class="buy-row">
+          <div class="qty-ctrl">
+            <button class="qty-btn" onclick="changeQty(-1)">−</button>
+            <span class="qty-val" id="qtyVal">1</span>
+            <button class="qty-btn" onclick="changeQty(1)">+</button>
+          </div>
+          <button class="btn-add-cart" onclick="addToCart()">🛒 Agregar al carrito</button>
+          <button class="btn-wa" onclick="window.open('https://wa.me/5646703917?text=Hola, quiero pedir la Maca 250g de NATURAL ANDES SUPPLY','_blank')" title="Pedir por WhatsApp">💬</button>
+        </div>
+
+        <div class="trust-row">
+          <div class="tr-item"><span class="tr-icon"></span><span class="tr-text">Envío gratis</span></div>
+          <div class="tr-item"><span class="tr-icon"></span><span class="tr-text">30 días devolución</span></div>
+          <div class="tr-item"><span class="tr-icon"></span><span class="tr-text">100% orgánica</span></div>
+          <div class="tr-item"><span class="tr-icon"></span><span class="tr-text">Pago seguro</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TABS -->
+    <section class="tabs-section reveal">
+      <div class="tabs-nav">
+        <button class="tab-btn active" onclick="switchTab(this,'desc')">Descripción</button>
+        <button class="tab-btn" onclick="switchTab(this,'nutrition')">Información nutricional</button>
+        <button class="tab-btn" onclick="switchTab(this,'howto')">Cómo usarla</button>
+        <button class="tab-btn" onclick="switchTab(this,'reviews')">Reseñas (186)</button>
+      </div>
+
+      <div class="tab-content active" id="tab-desc">
+        <div class="desc-grid">
+          <div class="desc-text">
+            <p>La Maca Andina en Polvo Premium de NATURAL ANDES SUPPLY proviene de los campos más elevados de la Meseta del Bombón, en Junín, Perú, a 4,000 metros sobre el nivel del mar. A esta altitud extrema, la raíz de maca desarrolla una concentración excepcional de nutrientes adaptándose a las condiciones climáticas más duras del planeta.</p>
+            <p>Nuestro proceso de gelatinización elimina el almidón crudo mediante calor suave, lo que resulta en un polvo más digestible, con mayor biodisponibilidad de sus nutrientes activos. A diferencia de la maca cruda, la versión gelatinizada es ideal para personas con estómagos sensibles.</p>
+            <p>Cada lote es analizado en laboratorio para garantizar pureza, ausencia de pesticidas y cumplimiento de los estándares USDA Organic. El empaque está fabricado con materiales biodegradables de origen vegetal.</p>
+          </div>
+          <div>
+            <ul class="highlights">
+              <li>100% raíz de maca pura gelatinizada, sin rellenos ni aditivos de ningún tipo</li>
+              <li>Certificación USDA Organic y comercio justo con agricultores locales de Junín</li>
+              <li>Proceso de secado a baja temperatura para preservar nutrientes activos</li>
+              <li>Empaque hermético biodegradable con cierre zip resellable</li>
+              <li>Análisis microbiológico y de pesticidas por lote, disponible en sitio web</li>
+              <li>Sin OMG, sin gluten, sin lácteos, 100% vegano y apto para diabéticos</li>
+              <li>Sabor suave, ligeramente dulce y malteado — fácil de mezclar</li>
+              <li>Vida útil de 24 meses desde fecha de fabricación</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-content" id="tab-nutrition">
+        <div class="nutrition-table">
+          <div class="nt-title">Información Nutricional</div>
+          <div class="nt-sub">Porción: 5g (1 cucharadita) · Porciones por envase 250g: ~50</div>
+          <div class="nt-row"><span class="nt-label">Calorías</span><span class="nt-val">20 kcal</span></div>
+          <div class="nt-row"><span class="nt-label">Carbohidratos totales</span><span class="nt-val">3.8 g</span></div>
+          <div class="nt-row"><span class="nt-label">Fibra dietética</span><span class="nt-val">0.9 g</span></div>
+          <div class="nt-row"><span class="nt-label">Azúcares naturales</span><span class="nt-val">0.8 g</span></div>
+          <div class="nt-row"><span class="nt-label">Proteína</span><span class="nt-val highlight">0.8 g</span></div>
+          <div class="nt-row"><span class="nt-label">Grasa total</span><span class="nt-val">0.2 g</span></div>
+          <div class="nt-row"><span class="nt-label">Hierro</span><span class="nt-val highlight">6% VD</span></div>
+          <div class="nt-row"><span class="nt-label">Calcio</span><span class="nt-val highlight">4% VD</span></div>
+          <div class="nt-row"><span class="nt-label">Vitamina C</span><span class="nt-val">3% VD</span></div>
+          <div class="nt-row"><span class="nt-label">Potasio</span><span class="nt-val">3% VD</span></div>
+          <div class="nt-row"><span class="nt-label">Glucosinolatos (activos)</span><span class="nt-val highlight">Presentes naturalmente</span></div>
+          <div class="nt-row"><span class="nt-label">Macamidas (exclusivos maca)</span><span class="nt-val highlight">Presentes naturalmente</span></div>
+          <div class="nt-disclaimer">* VD = Valor Diario. Los porcentajes están basados en una dieta de 2,000 kcal. Los valores pueden variar según el lote.</div>
+        </div>
+      </div>
+
+      <div class="tab-content" id="tab-howto">
+        <div style="max-width:700px;">
+          <div style="margin-bottom:2.5rem;">
+            <div style="font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--forest-deep);margin-bottom:1rem;">Dosis recomendada</div>
+            <p style="font-size:0.9rem;line-height:1.9;color:var(--gray);font-weight:300;margin-bottom:0.8rem;"><strong>Semana 1–2:</strong> 1 cucharadita (5g) al día para que el cuerpo se adapte.</p>
+            <p style="font-size:0.9rem;line-height:1.9;color:var(--gray);font-weight:300;margin-bottom:0.8rem;"><strong>Semana 3 en adelante:</strong> 1–2 cucharaditas (5–10g) al día como dosis de mantenimiento.</p>
+            <p style="font-size:0.9rem;line-height:1.9;color:var(--gray);font-weight:300;">Tómala preferentemente por la mañana para aprovechar su efecto energizante durante el día.</p>
+          </div>
+          <div style="margin-bottom:2.5rem;">
+            <div style="font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--forest-deep);margin-bottom:1rem;">Formas de consumo</div>
+            <ul class="highlights" style="list-style:none;">
+              <li>En batido o smoothie verde con espinaca, plátano y leche vegetal</li>
+              <li>Mezclada en avena, granola o yogurt de coco</li>
+              <li>Agregada a café, cacao o leche dorada (golden milk)</li>
+              <li>En agua con limón y miel como tónico matutino</li>
+              <li>Incorporada en recetas de galletas, pancakes o energy balls</li>
+            </ul>
+          </div>
+          <div style="background:rgba(45,106,79,0.06);border-left:4px solid var(--mint);padding:1.5rem;border-radius:2px;">
+            <div style="font-weight:700;font-size:0.85rem;color:var(--forest);margin-bottom:0.5rem;">⚠️ Precauciones</div>
+            <p style="font-size:0.82rem;line-height:1.8;color:var(--gray);font-weight:300;">No recomendada durante el embarazo o lactancia sin supervisión médica. Si tienes condiciones hormonales (hipotiroidismo, PCOS) consulta a tu médico antes de iniciar. No es un medicamento.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-content" id="tab-reviews">
+        <div class="reviews-top">
+          <div class="big-score">
+            <div class="bs-num">4.9</div>
+            <div class="bs-stars">★★★★★</div>
+            <div class="bs-count">186 reseñas</div>
+          </div>
+          <div style="flex:1;">
+            <div class="rbar-row"><span class="rbar-label">5 ★</span><div class="rbar-track"><div class="rbar-fill" style="width:90%"></div></div><span style="font-size:0.72rem;color:var(--gray);">168</span></div>
+            <div class="rbar-row"><span class="rbar-label">4 ★</span><div class="rbar-track"><div class="rbar-fill" style="width:7%"></div></div><span style="font-size:0.72rem;color:var(--gray);">13</span></div>
+            <div class="rbar-row"><span class="rbar-label">3 ★</span><div class="rbar-track"><div class="rbar-fill" style="width:2%"></div></div><span style="font-size:0.72rem;color:var(--gray);">4</span></div>
+            <div class="rbar-row"><span class="rbar-label">2 ★</span><div class="rbar-track"><div class="rbar-fill" style="width:1%"></div></div><span style="font-size:0.72rem;color:var(--gray);">1</span></div>
+            <div class="rbar-row"><span class="rbar-label">1 ★</span><div class="rbar-track"><div class="rbar-fill" style="width:0%"></div></div><span style="font-size:0.72rem;color:var(--gray);">0</span></div>
+          </div>
+        </div>
+        <div class="review-cards">
+          <div class="r-card"><div class="rc-top"><span class="rc-name">Laura M.</span><span class="rc-date">Ene 2025</span></div><div class="rc-stars">★★★★★</div><p class="rc-text">Llevo 3 meses tomándola cada mañana en mi smoothie. Mi energía mejoró muchísimo y ya no necesito café. El polvo se mezcla perfectamente sin grumos. ¡Completamente recomendada!</p></div>
+          <div class="r-card"><div class="rc-top"><span class="rc-name">Roberto S.</span><span class="rc-date">Feb 2025</span></div><div class="rc-stars">★★★★★</div><p class="rc-text">Compré la presentación de 500g porque ya era mi segunda compra. La calidad es consistente, el sabor es agradable y noto la diferencia en mis entrenamientos. Sin duda la mejor maca que he probado en México.</p></div>
+          <div class="r-card"><div class="rc-top"><span class="rc-name">Ana G.</span><span class="rc-date">Feb 2025</span></div><div class="rc-stars">★★★★★</div><p class="rc-text">Nutrióloga certificada. Recomiendo NATURAL ANDES SUPPLY a mis pacientes por la calidad de sus certificaciones y la transparencia en la información nutricional. Producto serio, marca confiable.</p></div>
+          <div class="r-card"><div class="rc-top"><span class="rc-name">Javier T.</span><span class="rc-date">Mar 2025</span></div><div class="rc-stars">★★★★☆</div><p class="rc-text">Muy buena calidad. Le doy 4 estrellas porque tardó un día más de lo esperado en llegar, pero el producto en sí es excelente. Ya estoy pidiendo mi segundo bolso.</p></div>
+        </div>
+      </div>
+    </section>
+
+
+
+  </div><!-- /producto-page -->
+
+  <!-- ======================================================== -->
+  <!-- SECCIÓN 3: CONTACTO (Proyecto_bien.html) -->
+  <!-- ======================================================== -->
+  <div id="contacto-page">
+
+    <div class="page-header">
+      <div class="ph-eyebrow">— Estamos para ti</div>
+      <h2 class="ph-title">Hablemos<br>de <em>bienestar</em></h2>
+      <p class="ph-desc">¿Tienes dudas sobre la maca, tu pedido o nuestro producto? Nuestro equipo está listo para ayudarte.</p>
+      <div class="ph-bg">🌿</div>
+    </div>
+
+    <section class="contact-main">
+      <div class="reveal">
+        <p class="section-label">— Información de contacto</p>
+        <h2 class="section-title">Siempre<br>a tu <em>lado</em></h2>
+        <p class="section-body">No importa si tienes dudas sobre la maca, quieres conocer más de nuestros certificados o simplemente deseas hacer un pedido personalizado. Estamos aquí.</p>
+
+        <div class="contact-cards">
+          <div class="contact-card">
+            <span class="cc-icon">📧</span>
+            <div>
+              <div class="cc-label">Correo electrónico</div>
+              <div class="cc-val">naturalandessupply@gmail.com</div>
+              <div class="cc-sub">Respondemos en menos de 24 hrs hábiles</div>
+            </div>
+          </div>
+          <div class="contact-card">
+            <span class="cc-icon">💬</span>
+            <div>
+              <div class="cc-label">WhatsApp (más rápido)</div>
+              <div class="cc-val">+52 55 1234 5678</div>
+              <div class="cc-sub">Respuesta en minutos en horario de atención</div>
+            </div>
+          </div>
+          <div class="contact-card">
+            <span class="cc-icon">📸</span>
+            <div>
+              <div class="cc-label">Instagram / TikTok</div>
+              <div class="cc-val">@naturalandessupply.mx</div>
+              <div class="cc-sub">DM abiertos </div>
+            </div>
+          </div>
+          <div class="contact-card">
+            <span class="cc-icon">📍</span>
+            <div>
+              <div class="cc-label">Punto de distribución</div>
+              <div class="cc-val">Ciudad de México</div>
+              <div class="cc-sub">Envíos a toda la República Mexicana</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hours-block">
+          <div class="hours-title">— Horario de atención</div>
+          <div class="hour-row"><span class="hr-day">Lunes – Viernes</span><span class="hr-time">9:00 – 18:00 hrs</span></div>
+          <div class="hour-row"><span class="hr-day">Sábado</span><span class="hr-time">10:00 – 14:00 hrs</span></div>
+          <div class="hour-row"><span class="hr-day">Domingo</span><span class="hr-time off">Cerrado</span></div>
+        </div>
+      </div>
+
+      <div class="form-wrap reveal">
+        <div id="formContent">
+          <div class="form-title">Escríbenos</div>
+          <p class="form-sub">Responderemos lo antes posible </p>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nombre *</label>
+              <input type="text" id="fname" placeholder="Tu nombre"/>
+            </div>
+            <div class="form-group">
+              <label>Apellido *</label>
+              <input type="text" id="lname" placeholder="Tu apellido"/>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Correo electrónico *</label>
+            <input type="email" id="email" placeholder="correo@ejemplo.com"/>
+          </div>
+
+          <div class="form-group">
+            <label>Teléfono / WhatsApp</label>
+            <input type="tel" id="phone" placeholder="+52 55 0000 0000"/>
+          </div>
+
+          <div class="form-group">
+            <label>Motivo de contacto *</label>
+            <select id="reason">
+              <option value="">Selecciona una opción</option>
+              <option>Información sobre el producto</option>
+              <option>Hacer un pedido</option>
+              <option>Estado de mi pedido</option>
+              <option>Devolución o cambio</option>
+              <option>Distribución / mayoreo</option>
+              <option>Colaboración o reseña</option>
+              <option>Otro</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Mensaje *</label>
+            <textarea id="message" placeholder="¿En qué podemos ayudarte? Si tienes preguntas sobre la maca, la calidad del producto, envíos o algo más, cuéntanos..."></textarea>
+          </div>
+
+          <div class="check-group">
+            <input type="checkbox" id="privacy"/>
+            <label for="privacy">Acepto el <a href="#">aviso de privacidad</a> y el tratamiento de mis datos para recibir respuesta. No enviamos spam.</label>
+          </div>
+
+          <button class="btn-send" onclick="submitForm()">Enviar mensaje</button>
+        </div>
+
+        <div class="form-success" id="formSuccess">
+          <span class="fs-icon">🌿</span>
+          <div class="fs-title">¡Mensaje recibido!</div>
+          <p class="fs-text">Gracias por escribirnos. Nuestro equipo revisará tu mensaje y te responderá en un plazo máximo de 24 horas hábiles. ¡Que tengas un día lleno de energía!</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="wa-section reveal">
+      <h2>¿Prefieres hablar<br>por WhatsApp?</h2>
+      <p>Es la forma más rápida de hacer tu pedido o resolver dudas. Respondemos en minutos.</p>
+      <a href="https://wa.me/5215512345678?text=Hola%20NATURAL%20ANDES%20SUPPLY,%20tengo%20una%20pregunta%20sobre%20la%20maca" target="_blank" class="btn-wa-big">
+        💬 Escribir por WhatsApp
+      </a>
+    </section>
+
+    <section class="faq-section">
+      <div class="faq-header reveal">
+        <p class="section-label">— Preguntas frecuentes</p>
+        <h2 class="section-title">Lo que más<br>nos <em>preguntan</em></h2>
+      </div>
+      <div class="faq-grid">
+        <div class="faq-item reveal">
+          <div class="faq-q">¿Cuánto tiempo tarda en llegar mi pedido?</div>
+          <p class="faq-a">Los pedidos se procesan en 24–48 horas hábiles. El tiempo de entrega es de 3 a 5 días hábiles a toda la República Mexicana. Para CDMX y ZM puede ser 2–3 días con servicio exprés.</p>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-q">¿La maca NATURAL ANDES SUPPLY realmente es orgánica?</div>
+          <p class="faq-a">Sí. Contamos con la certificación USDA Organic y nuestros campos en Junín, Perú, están libres de pesticidas y agroquímicos. Cada lote tiene análisis de laboratorio disponible previa solicitud.</p>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-q">¿En cuánto tiempo voy a notar los efectos?</div>
+          <p class="faq-a">Los primeros efectos en energía suelen notarse después de 1–2 semanas de uso continuo. Los beneficios hormonales y de rendimiento físico se observan generalmente entre 4 y 8 semanas.</p>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-q">¿Puedo tomar la maca si estoy embarazada?</div>
+          <p class="faq-a">No recomendamos el consumo durante el embarazo o lactancia sin supervisión médica. Si tienes condiciones hormonales (hipotiroidismo, PCOS, endometriosis), consulta a tu médico antes.</p>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-q">¿Hacen envíos fuera de México?</div>
+          <p class="faq-a">Actualmente solo realizamos envíos dentro de la República Mexicana. Si te encuentras en otro país, contáctanos por WhatsApp y evaluamos la posibilidad de un envío internacional.</p>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-q">¿Qué debo hacer si tengo un problema con mi pedido?</div>
+          <p class="faq-a">Escríbenos inmediatamente por WhatsApp o al correo <a href="mailto:hola@naturalandessupply.mx">hola@naturalandessupply.mx</a> con tu número de pedido y foto del problema. Resolvemos en menos de 24 horas: reenvío o reembolso sin complicaciones.</p>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /contacto-page -->
+
+  <!-- ======================================================== -->
+  <!-- FOOTER ÚNICO -->
+  <!-- ======================================================== -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">NATURAL ANDES <span>SUPPLY</span></div>
+        <p class="footer-tagline">Superalimentos de origen andino<br>para la vida moderna mexicana.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Productos</div>
+        <ul class="footer-links">
+          <li><a href="#producto-page">Maca Andina</a></li>
+          <li><a href="#">Camu Camu</a></li>
+          <li><a href="#">Cúrcuma</a></li>
+          <li><a href="#">Cacao Puro</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Empresa</div>
+        <ul class="footer-links">
+          <li><a href="#">Nuestra historia</a></li>
+          <li><a href="#">Certificaciones</a></li>
+          <li><a href="#contacto-page">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Soporte</div>
+        <ul class="footer-links">
+          <li><a href="#">Envíos</a></li>
+          <li><a href="#">Devoluciones</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Privacidad</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 NATURAL ANDES SUPPLY® — Todos los derechos reservados</span>
+      <span>Diseñado en México · Origen Perú</span>
+    </div>
+  </footer>
+
+  <script>
+    /* ---- PRODUCTO SCRIPTS ---- */
+    let qty = 1, currentPrice = 140, currentSize = '250g';
+    let cart = [];
+    const viewEmojis = ['🌿','🏔','🌱','⚗️'];
+
+    function updateCartBadge() {
+      const total = cart.reduce((s, i) => s + i.qty, 0);
+      let badge = document.getElementById('cartBadge');
+      if (!badge) {
+        badge = document.createElement('span');
+        badge.id = 'cartBadge';
+        badge.style.cssText = 'position:absolute;top:-6px;right:-6px;background:var(--earth);color:white;font-size:0.6rem;font-weight:700;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;';
+        const navBuy = document.querySelector('.nav-buy');
+        navBuy.style.position = 'relative';
+        navBuy.appendChild(badge);
+        navBuy.onclick = (e) => { e.preventDefault(); openCart(); };
+      }
+      badge.textContent = total;
+      badge.style.display = total > 0 ? 'flex' : 'none';
+    }
+
+    function renderCart() {
+      const el = document.getElementById('cartItems');
+      if (cart.length === 0) {
+        el.innerHTML = '<div style="text-align:center;padding:3rem 1rem;color:var(--gray);font-size:0.9rem;">Tu carrito está vacío 🌿</div>';
+        document.getElementById('cartTotal').textContent = '$0 MXN';
+        return;
+      }
+      el.innerHTML = cart.map((item, i) => `
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:1rem 0;border-bottom:1px solid var(--border);">
+          <div>
+            <div style="font-size:0.88rem;font-weight:700;color:var(--charcoal);margin-bottom:0.2rem;">Maca Andina Premium ${item.size}</div>
+            <div style="font-size:0.75rem;color:var(--gray);">$${item.price} MXN c/u</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:0.8rem;">
+            <div style="display:flex;align-items:center;border:1.5px solid var(--border);border-radius:2px;">
+              <button onclick="cartQty(${i},-1)" style="width:32px;height:32px;background:none;border:none;cursor:pointer;font-size:1rem;">−</button>
+              <span style="width:28px;text-align:center;font-size:0.85rem;font-weight:700;">${item.qty}</span>
+              <button onclick="cartQty(${i},1)" style="width:32px;height:32px;background:none;border:none;cursor:pointer;font-size:1rem;">+</button>
+            </div>
+            <button onclick="removeItem(${i})" style="background:none;border:none;color:var(--gray);cursor:pointer;font-size:0.8rem;">✕</button>
+          </div>
+        </div>
+      `).join('');
+      const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+      document.getElementById('cartTotal').textContent = '$' + total + ' MXN';
+    }
+
+    function cartQty(i, d) { cart[i].qty = Math.max(1, cart[i].qty + d); renderCart(); updateCartBadge(); }
+    function removeItem(i) { cart.splice(i, 1); renderCart(); updateCartBadge(); }
+    function openCart() { document.getElementById('cartOverlay').style.display = 'block'; document.getElementById('cartSidebar').style.right = '0'; renderCart(); }
+    function closeCart() { document.getElementById('cartOverlay').style.display = 'none'; document.getElementById('cartSidebar').style.right = '-420px'; }
+   function changeQty(d) { qty = Math.max(1, Math.min(99, qty + d)); document.getElementById('qtyVal').textContent = qty; document.getElementById('priceDisplay').textContent = currentPrice * qty; }
+
+    function selectVariant(el, size, price) {
+      document.querySelectorAll('.variant-btn').forEach(b => b.classList.remove('active'));
+      el.classList.add('active');
+      currentPrice = parseInt(price);
+      currentSize = size;
+      document.getElementById('priceDisplay').textContent = price;
+      document.getElementById('bagWeight').textContent = size + ' · Polvo Puro';
+      const msi = Math.round(currentPrice / 3);
+      document.getElementById('priceMsi').textContent = 'o 3 MSI de $' + msi + ' con tarjeta participante';
+      document.getElementById('priceOld').style.display = size === '500g' ? 'inline' : 'none';
+      if (size === '500g') document.getElementById('priceOld').textContent = '$682';
+    }
+
+    function addToCart() {
+      const existing = cart.find(i => i.size === currentSize);
+      if (existing) { existing.qty += qty; } else { cart.push({ size: currentSize, price: currentPrice, qty: qty }); }
+      updateCartBadge();
+      const toast = document.getElementById('toast');
+      toast.style.display = 'block'; toast.style.opacity = '1';
+      setTimeout(() => { toast.style.opacity = '0'; setTimeout(() => toast.style.display = 'none', 300); }, 2500);
+      setTimeout(() => openCart(), 400);
+    }
+
+    function switchTab(btn, id) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-' + id).classList.add('active');
+    }
+
+    function setView(i) {
+      document.querySelectorAll('.thumb').forEach((t, j) => t.classList.toggle('active', i === j));
+      document.getElementById('galleryMain').style.background =
+        i === 0 ? 'linear-gradient(145deg,#2D6A4F,#40916C)' :
+        i === 1 ? 'linear-gradient(145deg,#1B4332,#2D6A4F)' :
+        i === 2 ? 'linear-gradient(145deg,#40916C,#52B788)' :
+                  'linear-gradient(145deg,#1B4332,#4a6741)';
+      document.querySelector('.product-img-display .pid-leaf').textContent = viewEmojis[i];
+    }
+
+    /* ---- CONTACTO SCRIPTS ---- */
+    function submitForm() {
+      const f = document.getElementById('fname').value;
+      const e = document.getElementById('email').value;
+      const r = document.getElementById('reason').value;
+      const m = document.getElementById('message').value;
+      const p = document.getElementById('privacy').checked;
+      if (!f || !e || !r || !m) { alert('Por favor completa todos los campos requeridos (*).'); return; }
+      if (!p) { alert('Por favor acepta el aviso de privacidad.'); return; }
+      document.getElementById('formContent').style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    }
+
+    /* ---- REVEAL ANIMATION ---- */
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  </script>
+</body>
+</html>
